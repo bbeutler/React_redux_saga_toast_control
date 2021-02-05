@@ -1,0 +1,62 @@
+{
+  "name": "create-react-app-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "PORT=3008 react-scripts start",
+    "deploy": "npm run deploy:dev",
+    "deploy:dev": "npm run build:dev && npm run upload",
+    "deploy:prod": "npm run build:prod && npm run upload",
+    "build": "sh -ac '. .env.${REACT_APP_ENV}; react-scripts build'",
+    "build:dev": "REACT_APP_ENV=development npm run build",
+    "build:prod": "REACT_APP_ENV=production npm run build",
+    "upload": "gh-pages -d build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "analyze": "source-map-explorer build/static/js/main.*"
+  },
+  "homepage": "https://rhostem.github.io/redux-saga-toaster-control",
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --no-semi --single-quote --jsx-bracket-same-line --print-width 80 --trailing-comma all --parser flow --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "flow-bin": "^0.51.0",
+    "gh-pages": "^1.0.0",
+    "global": "^4.3.2",
+    "husky": "^0.14.3",
+    "immutable": "^3.8.1",
+    "lint-staged": "^4.0.2",
+    "moment": "^2.18.1",
+    "polished": "^1.3.0",
+    "prettier": "^1.5.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "next",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.2",
+    "react-router-redux": "next",
+    "react-scripts": "1.0.10",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-transition-group": "next",
+    "redux": "^3.7.2",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.15.6",
+    "redux-thunk": "^2.2.0",
+    "source-map-explorer": "^1.4.0",
+    "styled-components": "^2.1.1"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.1.9",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2"
+  }
+}
